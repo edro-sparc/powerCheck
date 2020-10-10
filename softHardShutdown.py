@@ -47,6 +47,12 @@ def turnOff():
 	# except
 
 if __name__ == '__main__':
-	while (api.set_lpm_status(0) == 2):
-		time.sleep(2)
+	lpm_set = False
+	while (!lpm_set):
+		try:
+			lpm_set = (api.set_lpm_status(0) == 2)
+		except Exception:
+			time.sleep(2)
+	# while (api.set_lpm_status(0) == 2):
+	# 	time.sleep(2)
 	main()
