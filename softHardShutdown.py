@@ -9,6 +9,7 @@ def main():
 	global intiateShutdown
 	try:
 		print(api.get_button1_status())
+
 	except Exception:
 		print("Exception")
 	while True:
@@ -33,6 +34,7 @@ def turnOff():
 	
 	try:
 		api.create_scheduled_event(1, Definition.EVENT_INTERVAL, Definition.EVENT_ONE_SHOT, 25, Definition.INTERVAL_TYPE_SEC, 0, 2, 500)
+		api.set_lpm_status(1)
 		# print(api.soft_power_off(5))
 		# print("button")
 		api.get_button1_status()
@@ -45,4 +47,6 @@ def turnOff():
 	# except
 
 if __name__ == '__main__':
+	while (api.set_lpm_status(1) == 2):
+		time.sleep(2)
 	main()
