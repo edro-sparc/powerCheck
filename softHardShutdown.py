@@ -30,15 +30,18 @@ def main():
 
 def turnOff():
 	# print(api.hard_power_off(15))
-	api.create_scheduled_event(1, Definition.EVENT_INTERVAL, Definition.EVENT_ONE_SHOT, 25, Definition.INTERVAL_TYPE_SEC, 0, 2, 500)
+	
 	try:
+		api.create_scheduled_event(1, Definition.EVENT_INTERVAL, Definition.EVENT_ONE_SHOT, 25, Definition.INTERVAL_TYPE_SEC, 0, 2, 500)
 		# print(api.soft_power_off(5))
 		# print("button")
 		api.get_button1_status()
 	except Exception:
 		print("Button Exception")
-	# os.system("sudo halt")
-	os.system("sleep 5 && sudo shutdown -h now")
+	finally:
+		# os.system("sudo halt")
+		os.system("echo Shutting Down in 5 seconds | wall")
+		os.system("sleep 5 && sudo shutdown -h now")
 	# except
 
 if __name__ == '__main__':
