@@ -50,7 +50,9 @@ if __name__ == '__main__':
 	lpm_set = False
 	while (not(lpm_set)):
 		try:
-			lpm_set = (api.set_lpm_status(0) == 2)
+			print("LPM")
+			if(api.set_lpm_status(0) == 1):
+				lpm_set = True
 		except Exception:
 			time.sleep(2)
 	# while (api.set_lpm_status(0) == 2):
