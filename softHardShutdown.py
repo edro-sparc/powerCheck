@@ -14,7 +14,7 @@ def main():
 		print("Exception")
 	while True:
 		try:
-			if(api.get_button1_status() is 1):
+			if(api.get_button1_status() == 1):
 				print("Turning OFF")
 				intiateShutdown = True
 				# print("Soft Pwr-Off set: " + str(api.create_scheduled_event(1, Definition.EVENT_INTERVAL, Definition.EVENT_ONE_SHOT, 1, Definition.INTERVAL_TYPE_SEC, 0, 3, 500)))
@@ -33,8 +33,8 @@ def turnOff():
 	# print(api.hard_power_off(15))
 	
 	try:
-		api.create_scheduled_event(1, Definition.EVENT_INTERVAL, Definition.EVENT_ONE_SHOT, 25, Definition.INTERVAL_TYPE_SEC, 0, 2, 500)
-		api.set_lpm_status(1)
+		print(api.create_scheduled_event(1, Definition.EVENT_INTERVAL, Definition.EVENT_ONE_SHOT, 25, Definition.INTERVAL_TYPE_SEC, 0, 2, 500))
+		print(api.set_lpm_status(1))
 		# print(api.soft_power_off(5))
 		# print("button")
 		api.get_button1_status()
