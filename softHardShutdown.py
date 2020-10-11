@@ -48,6 +48,7 @@ def turnOff():
 	# except
 
 if __name__ == '__main__':
+	os.system("sudo systemctl stop power_agent.service")
 	lpm_set = False
 	while (not(lpm_set)):
 		try:
